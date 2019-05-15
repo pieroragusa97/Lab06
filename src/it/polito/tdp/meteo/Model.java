@@ -3,8 +3,10 @@ package it.polito.tdp.meteo;
 import java.util.List;
 
 import it.polito.tdp.meteo.bean.SimpleCity;
+import it.polito.tdp.meteo.db.MeteoDAO;
 
 public class Model {
+	MeteoDAO dao=new MeteoDAO();
 
 	private final static int COST = 100;
 	private final static int NUMERO_GIORNI_CITTA_CONSECUTIVI_MIN = 3;
@@ -15,9 +17,8 @@ public class Model {
 
 	}
 
-	public String getUmiditaMedia(int mese) {
-
-		return "TODO!";
+	public Double getUmiditaMedia(int mese) {
+		return dao.calcolaUmidita(mese);
 	}
 
 	public String trovaSequenza(int mese) {
