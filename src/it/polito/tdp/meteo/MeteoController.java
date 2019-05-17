@@ -37,6 +37,12 @@ public class MeteoController {
 
 	@FXML
 	void doCalcolaSequenza(ActionEvent event) {
+		if(btnCalcola.isArmed()) {
+			txtResult.clear();
+			for(Citta c:model.trovaSequenza(boxMese.getValue().getValue())) {
+				txtResult.appendText(c.getNome()+"\n");
+			}
+		}
 
 	}
 
