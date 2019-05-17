@@ -6,6 +6,7 @@ import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.meteo.bean.Citta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -42,7 +43,9 @@ public class MeteoController {
 	@FXML
 	void doCalcolaUmidita(ActionEvent event) {
 		if(btnUmidita.isArmed()) {
-			txtResult.appendText(String.format("umidita: %s",model.getUmiditaMedia(boxMese.getValue().getValue())));
+			txtResult.clear();
+			for(Citta c:model.allCitta())
+			  txtResult.appendText(String.format("Citta: %s    Umidita: %f\n",c.getNome(),model.getUmiditaMedia(boxMese.getValue().getValue(),c)));
 		}
 
 	}
